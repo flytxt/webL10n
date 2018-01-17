@@ -1005,9 +1005,9 @@ document.webL10n = (function(window, document, undefined) {
     // load the default locale and translate the document if required
     if (!document.cookie) {
         if (document.documentElement.lang === userLocale) {
-        loadLocale(userLocale);
+          loadLocale(userLocale);
       } else {
-        loadLocale(userLocale, translateFragment);
+          loadLocale(userLocale, translateFragment);
       }
       } else {
         document.webL10n.setLanguage(document.cookie);
