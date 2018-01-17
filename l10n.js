@@ -44,7 +44,7 @@ document.webL10n = (function(window, document, undefined) {
    * content until the `localized' event happens.
    */
 
-  var gAsyncResourceLoading = true; // read-only
+  var gAsyncResourceLoading = false; // read-only
 
 
   /**
@@ -1003,11 +1003,15 @@ document.webL10n = (function(window, document, undefined) {
         (gAsyncResourceLoading ? 'asynchronously.' : 'synchronously.'));
 
     // load the default locale and translate the document if required
-    if (document.documentElement.lang === userLocale) {
-      loadLocale(userLocale);
-    } else {
-      loadLocale(userLocale, translateFragment);
-    }
+    if (!document.cookie) {
+        if (document.documentElement.lang === userLocale) {
+        loadLocale(userLocale);
+      } else {
+        loadLocale(userLocale, translateFragment);
+      }
+      } else {
+        document.webL10n.setLanguage(document.cookie);
+      }
   }
 
   // browser-specific startup
