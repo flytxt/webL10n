@@ -1006,9 +1006,9 @@ document.webL10n = (function(window, document, undefined) {
     if (!document.cookie.includes('user_lang')) {
       if (document.documentElement.lang === userLocale) {
         loadLocale(userLocale);
-    } else {
+      } else {
         loadLocale(userLocale, translateFragment);
-    }
+      }
     } else {
       document.webL10n.setLanguage(app.getCookie('user_lang'));
     }
