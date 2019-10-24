@@ -1153,6 +1153,18 @@ document.webL10n = (function(window, document, undefined) {
       return '{{' + key + '}}';
     },
 
+    // set the localized string to another value
+    set: function(key, value) {
+      var index = key.lastIndexOf('.');
+      var prop = gTextProp;
+      if (index > 0) { // An attribute has been specified
+        prop = key.substr(index + 1);
+        key = key.substring(0, index);
+      }
+      var data = this.getData();
+      data[key][prop] = value;
+    },
+
     // debug
     getData: function() { return gL10nData; },
     getText: function() { return gTextData; },
